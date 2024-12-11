@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(red,yellow);
+            position: relative;
+            transform: translateX(0);
+        }
+        .symbol{
+            width: 1px;
+            background-color: black;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 800px;
+        }
+    </style>
+</head>
+<body>
+<div class="main"></div>
+<div class="symbol"></div>
+</body>
+<script>
+    var stepLength=8;
+    var terminal = 800;
+    var main = document.querySelector(".main");
+    var currentLeft = parseInt(getComputedStyle(main).left);
+    // console.log(currentLeft)
+    var nextLeftValue = currentLeft;
+    var timerId=setInterval(function () {
+        nextLeftValue+=stepLength;
+        var lastStepLength = terminal-nextLeftValue;
+        if (lastStepLength<stepLength){
+            //如果加上步长之后的下一次距离小于步长了，直接把下次的距离一起加上
+            nextLeftValue = nextLeftValue+lastStepLength;
+            clearInterval(timerId);
+        }
+        main.style.transform=`translateX(${nextLeftValue}px)`;
+    },20)
+    
+    
+    function cubicBezier(x1,y1,x2,y2,t) {
+        var x = 3 * t * Math.pow((1-t),2) * x1 + 3 * Math.pow(t,2) * (1-t) * x2 + Math.pow(t,3)
+        var y = 3 * t * Math.pow((1-t),2) * y1 + 3 * Math.pow(t,2) * (1-t) * y2 + Math.pow(t,3)
+        return [x,y];
+    }
+
+    console.log(cubicBezier(0.62, 0.1, 0.43, 0.94, 1));
+</script>
+</html>

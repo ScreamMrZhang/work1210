@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height: 500vh;
+            background: linear-gradient(to bottom,red,yellow);
+        }
+        .toTop{
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            display: none;
+            background: aqua;
+            border-radius: 50%;
+        }
+        html,body{
+            scroll-behavior: smooth;
+        }
+
+        .a{
+            width: 300px;
+            height: 300px;
+        }
+
+        .b{
+            height: 500px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<button class="clearTimer">清除延时器</button>
+<!--<div style="background: aqua" class="a b"></div>-->
+<div class="container">
+
+</div>
+<svg class="toTop" xmlns="http://www.w3.org/2000/svg" width="50" height="50" color="white" viewBox="0 0 16 16">
+    <path fill="currentColor" d="M3.47 7.78a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018L9 4.81v7.44a.75.75 0 0 1-1.5 0V4.81L4.53 7.78a.75.75 0 0 1-1.06 0"/></svg>
+</body>
+<script>
+    var toTop = document.querySelector(".toTop");
+
+    window.addEventListener("scroll",function (){
+        if (window.pageYOffset > 800) {
+            toTop.style.display="block";
+        }else{
+            toTop.style.display="none";
+        }
+    });
+    toTop.addEventListener("click",function (){
+        var htmlActiveStyle = getComputedStyle(document.documentElement);
+        var scrollHeight = window.pageYOffset;
+        if (htmlActiveStyle.scrollBehavior==="smooth") {
+            // document.documentElement.scrollTop 可以设置页面滚动的位置 number
+            // document.documentElement.scrollTop = 0;
+            document.documentElement.scrollIntoView();
+            window.scroll(0,0);
+        }else{
+            // while (window.pageYOffset>0){
+            //     document.documentElement.scrollTop = window.pageYOffset-20;
+            // }
+            console.log("js 兼容")
+            var timerId=setInterval(function () {
+                document.documentElement.scrollTop = window.pageYOffset-50;
+                console.log(window.pageYOffset-50);
+                if (window.pageYOffset === 0) {
+                    window.clearInterval(timerId);
+                }
+            },200)
+            clearInterval();
+        }
+        // window.scroll(0,0);
+    })
+
+    //全局方法
+    //获取dom元素计算后的样式表
+    var divEle = document.querySelector(".a");
+    var computedStyle = getComputedStyle(divEle);
+    console.log(computedStyle.width);
+    console.log(computedStyle.height);
+    console.log(computedStyle.background);
+    console.log(getComputedStyle(document.body).scrollBehavior);
+
+    var times=setTimeout(function () {
+        console.log("5s到了")
+    },5000);
+    var element = document.querySelector(".clearTimer");
+    element.addEventListener("click",function () {
+        clearTimeout(times);
+    })
+
+    var timeId = 0;
+    function dingshiqi(fn,duration) {
+        timeId=setTimeout(function () {
+            fn();
+            dingshiqi(fn,duration);
+        },duration)
+    }
+
+    function cleardingshiqi(ti) {
+        clearTimeout(ti);
+    }
+    document.body.addEventListener("click",function () {
+        cleardingshiqi(timeId);
+    })
+
+
+</script>
+</html>

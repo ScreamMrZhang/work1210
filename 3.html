@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方块运动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(red,yellow);
+            position: relative;
+            margin-top: 300px;
+            transform: translateX(300px);
+        }
+    </style>
+</head>
+<body>
+<div class="main"></div>
+</body>
+<script>
+
+    var start =300;
+    var main = document.querySelector(".main");
+    var i =1;
+    var nextLeftValue = start
+    var step;
+    var flag =false;
+    var timerId=setInterval(function () {
+        // step = cubicBezier(0.62, 0.1, 0.43, 0.94, i / 200) * 10;
+        step = cubicBezier(.75,-0.6,.75,1.6, i / 200) * 10;
+        if (flag){
+            step*=-1;
+        }
+        nextLeftValue = nextLeftValue+step;
+        main.style.transform=`translateX(${nextLeftValue}px)`;
+        if (i===200){
+            i=1;
+            flag = !flag;
+        }
+        i++;
+    },8)
+    console.log();
+    // var nextLeftValue = currentLeft;
+    // var timerId=setInterval(function () {
+    //     nextLeftValue+=stepLength;
+    //     var lastStepLength = terminal-nextLeftValue;
+    //     if (lastStepLength<stepLength){
+    //         //如果加上步长之后的下一次距离小于步长了，直接把下次的距离一起加上
+    //         nextLeftValue = nextLeftValue+lastStepLength;
+    //         clearInterval(timerId);
+    //     }
+    //     ;
+    // },20)
+
+
+    function cubicBezier(x1,y1,x2,y2,t) {
+        // var x = 3 * t * Math.pow((1-t),2) * x1 + 3 * Math.pow(t,2) * (1-t) * x2 + Math.pow(t,3)
+        var y = 3 * t * Math.pow((1-t),2) * y1 + 3 * Math.pow(t,2) * (1-t) * y2 + Math.pow(t,3)
+        return y;
+    }
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="text">
+</body>
+<script>
+    var text = document.getElementById("text");
+    text.addEventListener("blur",function () {
+        var number = parseInt(text.value);
+        var i =0;
+        var timerId=setInterval(function () {
+            i=i+7;
+            text.value=i;
+            if (i>=number){
+                text.value=number;
+                clearInterval(timerId);
+            }
+        },0)
+    })
+
+</script>
+</html>

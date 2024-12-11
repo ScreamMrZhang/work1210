@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        div {
+            padding: 5px;
+            height: 100px;
+            text-align: left;
+            vertical-align: center;
+
+        }
+        .countdown,.million{
+            width: 200px;
+            display: inline-block;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .day{
+            width: 410px;
+            display: inline-block;
+            margin-top: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        span {
+            color: #afafaf;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #countdown, #million, #day {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+<div class="countdown">
+    <span>Countdown</span>
+    <div id="countdown"></div>
+</div>
+<div class="million">
+    <span>Million Seconds</span>
+    <div id="million"></div>
+</div><br>
+<div class="day">
+    <span>Day Level</span>
+    <div id="day"></div>
+</div>
+</body>
+<script>
+    // 倒计时目标时间：2天后
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 2);
+
+    // 实时刷新函数
+    function updateCountdowns() {
+        const now = new Date();
+        const diff = targetDate - now; // 剩余时间（毫秒）
+
+        if (diff <= 0) {
+            // 倒计时结束
+            document.getElementById('countdown').innerText = "00:00:00";
+            document.getElementById('million').innerText = "00:00:00:000";
+            document.getElementById('day').innerText = "0天0时0分0秒";
+            clearInterval(interval);
+            return;
+        }
+
+        // 剩余时间的计算
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        const milliseconds = diff % 1000;
+
+        // 格式化为两位数字
+        const pad = (num) => (num < 10 ? '0' + num : num);
+
+        // 更新第一个 class 的内容（小时:分钟:秒钟）
+        document.getElementById('countdown').innerText = `${pad(hours + days * 24)}:${pad(minutes)}:${pad(seconds)}`;
+
+        // 更新第二个 class 的内容（小时:分钟:秒钟:毫秒）
+        document.getElementById('million').innerText = `${pad(hours + days * 24)}:${pad(minutes)}:${pad(seconds)}:${milliseconds}`;
+
+        // 更新第三个 class 的内容（x天x时x分x秒）
+        document.getElementById('day').innerText = `${days}天${pad(hours)}小时${pad(minutes)}分${pad(seconds)}秒`;
+    }
+
+    // 定时器，0秒刷新一次
+    const interval = setInterval(updateCountdowns, 0);
+
+</script>
+</html>

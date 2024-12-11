@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height: 500vh;
+            background: linear-gradient(to bottom,red,yellow);
+        }
+        html,body{
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+</div>
+</body>
+<script>
+    // 监听滚动事件
+    window.addEventListener('scroll', function() {
+        // 获取页面的总高度和当前滚动位置
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        if (scrollTop + windowHeight >= documentHeight) {
+            // 滚动到顶部
+            window.scrollTo(0,0);
+        }
+    });
+
+</script>
+</html>

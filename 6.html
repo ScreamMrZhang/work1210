@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面绘画</title>
+    <link rel="stylesheet" href="./6.css">
+</head>
+<body>
+<div class="outer">
+    <div class="top">
+        <div class="top-close">
+            <button class="closeBtn" type="button" aria-label="Close" data-modal="modal-sign_in">
+                <span class="closeBtnText" aria-hidden="true">×</span>
+            </button>
+        </div>
+        <figure class="">
+            <img width="120" height="30" class="dark:hidden" src="https://catflix.su/wp-content/themes/distv/resources/assets/img/catflix.svg" alt="distv+">
+<!--            <img width="120" height="30" class="hidden dark:block" src="https://catflix.su/wp-content/themes/distv/resources/assets/img/catflix-dark.svg" alt="distv+">-->
+        </figure>
+        <div class="tittle">Welcome Back!</div>
+    </div>
+
+    <form id="form-sgnn" class="bottom">
+        <div class="emailInputDiv">
+            <label for="email" class="placeholder" id="emailLabel">Email</label>
+            <input id="email" name="email" type="email" class="input">
+        </div>
+
+        <div class="pwdInputDiv">
+                <label for="password" class="placeholder" id="pwdLabel">Password</label>
+                <input class="inp-password" id="password" name="password" type="password"><button class="pwdBtn" type="button" aria-label="Password"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M2.55 13.406c-.272-.373-.408-.56-.502-.92a2.5 2.5 0 0 1 0-.971c.094-.361.23-.548.502-.92C4.039 8.55 7.303 5 12 5s7.961 3.55 9.45 5.594c.272.373.408.56.502.92a2.5 2.5 0 0 1 0 .971c-.094.361-.23.548-.502.92C19.961 15.45 16.697 19 12 19s-7.961-3.55-9.45-5.594"/><path d="M12 14a2 2 0 1 0 0-4a2 2 0 0 0 0 4"/></g></svg>
+</span></button>
+        </div>
+
+        <div class="rememberAndPwd">
+            <label class="rem" for="remember">
+                <input id="remember" name="remember" type="checkbox">
+                <span>Remember me</span>
+            </label>
+            <button class="forgetBtn" data-modal="modal-recovery" type="button">Password?</button>
+        </div>
+
+        <div>
+            <button class="signBtn" type="button">Sign In</button>
+        </div>
+
+        <p class="text-center">
+            Don’t have account?
+            <button class="signUpBtn" data-modal="modal-sign_up" type="button">Sign Up</button>
+        </p>
+    </form>
+</div>
+</body>
+
+<script>
+    var email = document.getElementById("email");
+    var pwd = document.getElementById("password");
+    var emailLabel = document.getElementById("emailLabel");
+    var pwdLabel = document.getElementById("pwdLabel");
+    email.addEventListener("focus",function () {
+        emailLabel.style.fontSize="13px";
+        emailLabel.style.top="10px";
+
+    })
+    email.addEventListener("blur",function () {
+        if (!email.value){
+            emailLabel.style.fontSize="20px";
+            emailLabel.style.top="20px";
+        }
+    })
+    pwd.addEventListener("focus",function () {
+        pwdLabel.style.fontSize="13px";
+        pwdLabel.style.top="10px";
+
+    })
+    pwd.addEventListener("blur",function () {
+        if (!pwd.value){
+            pwdLabel.style.fontSize="20px";
+            pwdLabel.style.top="20px";
+        }
+    })
+    var showBtn = document.querySelector(".pwdBtn");
+    showBtn.addEventListener("click",function () {
+        if (pwd.type==="password"){
+            pwd.type="text";
+        }else {
+            pwd.type="password";
+        }
+    })
+
+
+</script>
+</html>

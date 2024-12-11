@@ -1,0 +1,196 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    text-align: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c1c1c;
+}
+.outer{
+    width: 512px;
+    height: 588px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    text-align: center;
+}
+.top-close{
+    width: 100%;
+    text-align: right;
+}
+.top{
+    padding: 24px 48px;
+    width: 416px;
+    height: 124px;
+}
+.closeBtn{
+    margin-top: 16px;
+    color: #677489;
+    width: 43px;
+    height: 43px;
+    background-color: #f8fafc;
+    border: 3px solid #eff3f7;
+    border-radius: 10%;
+}
+.closeBtnText{
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 26px;
+
+}
+.closeBtn:hover{
+    color: #000;
+    background-color: #a8afbb;
+}
+.tittle{
+    font-family: Arial;
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 10px;
+}
+.bottom{
+    width: 416px;
+    height: 320px;
+    padding: 24px 48px;
+}
+.emailInputDiv{
+    width: 416px;
+    height: 56px;
+    position: relative;
+}
+#email{
+    width: 382px;
+    height: 22px;
+    padding: 24px 16px 8px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+/*鼠标点击input*/
+.placeholder {
+    padding: 8px 16px 0 16px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    transform: translateY(-45%);
+    font-size: 20px;
+    color: #aaa;
+    pointer-events: none; /* 禁止鼠标事件 */
+    transition: all 0.5s ease; /* 动画过渡效果 */
+}
+/* 输入框聚焦样式 */
+#email:focus,#password:focus {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+#password{
+    width: 327px;
+    height: 24px;
+    padding: 24px 16px 8px;
+    font-size: 16px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: none; /* 右边无边框 */
+    /* 设置圆角 */
+    border-top-left-radius: 4px; /* 左上圆角 */
+    border-bottom-left-radius: 4px; /* 左下圆角 */
+    outline: none;
+}
+.pwdInputDiv{
+    margin-top: 30px;
+    width: 416px;
+    height: 56px;
+    position: relative;
+}
+.pwdBtn{
+    width: 56px;
+    height: 58px;
+    line-height: 56px;
+    border-top: 1px solid #ccc;
+    border-left: none;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc; /* 右边无边框 */
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #ffffff;
+    text-align: center;
+    position: relative;
+    top: -9px;
+}
+span svg{
+    position: relative;
+    top: 15%;
+}
+.rememberAndPwd{
+    margin-top: 30px;
+    width: 416px;
+    height: 48px;
+    line-height: 48px;
+    position: relative;
+
+}
+.rem{
+    position: absolute;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    color: #64748b;
+    left: 0;
+    display: flex; /* 启用 Flexbox 布局 */
+    align-items: center; /* 垂直居中 */
+    vertical-align: center;
+    justify-content: center; /* 水平居中 */
+}
+.forgetBtn {
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0891b2;
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    border: none;
+    background:none;
+}
+#remember{
+    width: 24px;
+    height: 24px;
+    line-height: 48px;
+    margin-right: 8px;
+}
+.signBtn{
+    width: 416px;
+    height: 48px;
+    padding: 8px 24px;
+    background: #000;
+    font-size: 16px;
+    line-height: 16px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    color: #fff;
+    margin-top: 20px
+;
+}
+.text-center{
+    margin-top: 20px;
+    width: 416px;
+    height: 48px;
+    color: #64748b;
+    font-size: 16px;
+}
+.signUpBtn{
+    color: #0891b2;
+    height: 48px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
