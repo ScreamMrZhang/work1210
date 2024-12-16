@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            vertical-align: middle;
+            align-items: center;
+            display:flex;
+            justify-content: center;
+        }
+        .dark body{
+            background-color: black;
+        }
+        .light body{
+            background-color: white;
+        }
+        .dark .message{
+            color: white;
+        }
+        .light .message{
+            color: black;
+        }
+        body ,h1{
+            transition: all ease-in-out 500ms;
+        }
+        h1,.switch-container{
+            display: inline-block;
+        }
+        .switch-container .switch-main::after{
+            cursor: pointer;
+        }
+        .switch-input{
+            /*display: none;*/
+        }
+        .switch-input:checked ~ .switch-main::after{
+            left: 50px;
+        }
+        .switch-input:checked ~.switch-main>.open{
+            color: white;
+        }
+        .switch-main{
+            justify-content: space-around;
+            align-items: center;
+            width: 100px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: blueviolet;
+            display: flex;
+            position: relative;
+        }
+        .switch-main::after{
+            content: '';
+            display: inline-block;
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            transition: all ease-in-out 200ms;
+        }
+        .open{
+            color: black;
+            transition: all ease-in-out 1000ms;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 100px">
+    <h1 class="message">Javascript</h1>
+    <div class="switch-container">
+        <input style="display: none" class="switch-input" id="switch-input" type="checkbox">
+        <label class="switch-main" for="switch-input">
+            <span class="open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 12a6 6 0 1 1-12 0a6 6 0 0 1 12 0"/><path fill="currentColor" fill-rule="evenodd" d="M12 1.25a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0V2a.75.75 0 0 1 .75-.75M4.399 4.399a.75.75 0 0 1 1.06 0l.393.392a.75.75 0 0 1-1.06 1.061l-.393-.393a.75.75 0 0 1 0-1.06m15.202 0a.75.75 0 0 1 0 1.06l-.393.393a.75.75 0 0 1-1.06-1.06l.393-.393a.75.75 0 0 1 1.06 0M1.25 12a.75.75 0 0 1 .75-.75h1a.75.75 0 0 1 0 1.5H2a.75.75 0 0 1-.75-.75m19 0a.75.75 0 0 1 .75-.75h1a.75.75 0 0 1 0 1.5h-1a.75.75 0 0 1-.75-.75m-2.102 6.148a.75.75 0 0 1 1.06 0l.393.393a.75.75 0 1 1-1.06 1.06l-.393-.393a.75.75 0 0 1 0-1.06m-12.296 0a.75.75 0 0 1 0 1.06l-.393.393a.75.75 0 1 1-1.06-1.06l.392-.393a.75.75 0 0 1 1.061 0M12 20.25a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1a.75.75 0 0 1 .75-.75" clip-rule="evenodd"/></svg></span>
+            <span class="close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.272 2.406a1 1 0 0 0-1.23-1.355C6.59 1.535 5.432 2.488 4.37 3.55a11.4 11.4 0 0 0 0 16.182c4.518 4.519 11.51 4.261 15.976-.205c1.062-1.062 2.014-2.22 2.498-3.673A1 1 0 0 0 21.55 14.6c-3.59 1.322-7.675.734-10.433-2.025C8.35 9.808 7.788 5.744 9.272 2.406"/></svg></span>
+        </label>
+    </div>
+</div>
+</body>
+<script>
+    var switchButton = document.querySelector(".switch-input");
+    switchButton.onchange=function (e) {
+        document.documentElement.setAttribute('class',this.checked ? 'dark':'light')
+    }
+</script>
+</html>

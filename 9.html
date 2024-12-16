@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .switch-main{
+        display: flex;
+        width: 100px;
+        height: 50px;
+        align-items: center;
+        border-radius: 25px;
+        background-color: #0891b2;
+      }
+      .switch-inner{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 5px;
+        background-color: white;
+        transform: translateX(0);
+        transition: all ease-in-out 500ms;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .switch-inner::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        transform: translateX(0);
+        transition: all ease-in-out 300ms;
+      }
+
+      #switch-checkbox:checked~.switch-main>.switch-inner{
+        transform: translateX(50px);
+      }
+      #switch-checkbox:checked~.switch-main>.switch-inner::after{
+        background-color: #0891b2;
+        transform: translateX(-10px);
+      }
+    </style>
+</head>
+<body>
+<div class="switch">
+  <input id="switch-checkbox" type="checkbox">
+  <label class="switch-main" for="switch-checkbox">
+    <div class="switch-inner"></div>
+  </label>
+</div>
+</body>
+<script>
+
+</script>
+</html>
